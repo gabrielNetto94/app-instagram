@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+//conecta com banco de dados 
 mongoose.connect('mongodb+srv://admin:admin@cluster0-8vdl1.mongodb.net/test?retryWrites=true&w=majority',{
     useNewUrlParser: true,
 });

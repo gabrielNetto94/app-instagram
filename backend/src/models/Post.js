@@ -17,4 +17,5 @@ const PostSchema = new mongoose.Schema({
     timestamps: true,
 });
 
+//exporta a tabela para ser usada
 module.exports = mongoose.model('Post', PostSchema);
