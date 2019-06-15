@@ -33,6 +33,10 @@ app.use('/files',express.static(path.resolve(__dirname,'..','uploads','resized')
 //aponta para o arquivo de rotas
 app.use(require('./routes'));
 
+app.get('/',(req, res) =>{
+    return res.send('Hello '+req.query.name);
+});
+
 //escuta na posta 3333
 server.listen(3333);
 

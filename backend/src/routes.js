@@ -13,6 +13,7 @@ const upload = multer(uploadConfig);
 //ROTA PARA INSERIR IMAGEM E BUSCAR OS DADOS SALVOS
 //intercepta requisições na raiz  e chama o PostController.store para armazenar esta requisição
 routes.post('/posts',upload.single('image'),PostController.store); 
+
 //retorna os posts da aplicação
 routes.get('/posts',PostController.index); 
 

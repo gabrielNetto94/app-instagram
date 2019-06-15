@@ -1,0 +1,41 @@
+Bibliotecas para BackEnd
+
+    1-  instalação do nodejs
+        site do nodejs
+        
+    2- instalação do npm
+        npm install
+
+    3- instalação do chocolatey
+        execute o cmd como administrador o comando abaixo:
+
+        @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+
+    3-  instalação do yarn pelo chocolatey 
+        choco install yarn
+
+    4- Download do Insomnia para teste de requisições
+
+    Downloads via yarn
+
+        5- Download mongoose para trabalhar com mongoDB
+            yarn add mongoose 
+        6- Download path
+
+        7- Download multer
+
+        8- Download sharp
+
+        9  Download fs
+
+        10 - Download io
+
+Bibliotecas para FrontEnd
+    1- yarn create react-app frontend
+        //caso dê algum erro execute separadamente os comandos abaixo
+        yarn global add create-react-app
+        create-react-app frontend
+
+    2-  Excluir arquivos da pasta 'src' do frontend, deixando apenas os arquivos 'App.js' e 'index.js'
+    
+    3- yarn add react-router-dom
