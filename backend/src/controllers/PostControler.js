@@ -24,14 +24,17 @@ module.exports = {
         //pega o req.file a atribui a imagem
         const {filename:image} = req.file;
         
+        //splita a variável image por '.', 
+        const [name] = image.split('.');
+        //concatena nome original do arquivo + '.jpg'
+        const fileName = name+'.jpg';
 
-    
         //redimensiona a imagem antes de salvar no banco
-        await sharp(req.file.path)
+        await sharp(req.file.path)//método assíncrono utiliza-se o "await"
             .resize(500)//redimensiona a imagem
             .jpeg({quality: 70})//seta uma quilidade 70% para não deixar muito pesada e formato de arquivo
             .toFile( //salva ela em outra pasta "resized"
-                path.resolve(req.file.destination, 'resized',image) //aponta para o caminho
+                path.resolve(req.file.destination, 'resized',fileName) //aponta para o caminho
             )
     
         //deleta a imagem original, deixando a apenas ela redimensionada na pasta resized
@@ -43,8 +46,11 @@ module.exports = {
             place,
             description,
             hashtags,
-            image,
+            image: fileName,//quando salvar no banco, já salva com o nome 'fileName'
         });
+
+        //toda vez que ocorrer uma nova postagem, o backEnd envia um post para o front, para atualizar as postagens
+        req.io.emit('post',post);
 
         //retorna o post que foi criado com a requisição Post.create
         return res.json({post});

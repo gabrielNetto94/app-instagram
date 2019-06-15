@@ -2,7 +2,6 @@ const multer = require('multer');
 //formata os caminhos tanto para unix como para windows
 const path =  require('path');
 
-
 module.exports = {
     //método para salvar as imagens
     storage: new multer.diskStorage({

@@ -12,6 +12,9 @@ module.exports = {
         //após retorna a consulta no banco, incremente +1 no like
         post.likes +=1;
         
+        //toda vez que ocorrer um like, o backEnd envia um psot para o front para atualizar os likes 
+        req.io.emit('like',post);
+
         // salva a alteração no banco
         await post.save();
         

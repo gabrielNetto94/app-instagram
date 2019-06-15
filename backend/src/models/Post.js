@@ -7,7 +7,7 @@ const PostSchema = new mongoose.Schema({
     description: String,
     hashtags: String,
     image: String,
-    likes: {
+    likes: {//seta o objeto likes para Number e iniciar com 0
         type: Number,
         default: 0,
     }
