@@ -16,7 +16,4 @@ function App() {
   );
 }
 
-/**
- * PAREI EM 18MIN DO VÍDEO!!
- */
 export default App;

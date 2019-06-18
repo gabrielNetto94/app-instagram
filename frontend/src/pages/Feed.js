@@ -7,15 +7,20 @@ import more from '../assets/more.svg'
 import like from '../assets/like.svg'
 import comment from '../assets/comment.svg'
 import send from '../assets/send.svg'
+import io from 'socket.io-client';
 
 class Feed extends Component{
 
     //variavel dentro do componente que armazena as informações
     state = {
+        //array dos posts
         feed: [],
     };
 
     async componentDidMount(){
+        
+        this.registerToSocket();
+
         //quanto o componente é executado este método é executado, tipo um construtor
         const response = await api.get('posts');//executa o método da api
 
@@ -23,7 +28,31 @@ class Feed extends Component{
         //ao final da chamada do método da api, altera o valor do estado 
         this.setState({ feed:response.data });
     }
+    
+    registerToSocket = () => {
+        //const socket = io('http://localhost:3333');
+        const socket = io('http://172.16.0.9:3333');
+        
+        //atualiza o feed com um novo post
+        socket.on('post', newPost => {
+            //o feed que é um array, vai receber um novo post e mais o restante de posts que já existem
+            this.setState({ feed: [newPost, ... this.state.feed] });
+        })
 
+        //atualiza o post com um novo like
+        socket.on('like', likedPost => {
+            this.setState({
+                    feed: this.state.feed.map(post => 
+                        post._id === likedPost._id ? likedPost : post
+                )
+            });
+        })
+    }
+
+    handleLike = id =>{
+        //cria o método para dar like no post
+        api.post('/posts/'+id+'/like');
+    }
     render(){
         return (
             <section id="post-list">
@@ -43,8 +72,10 @@ class Feed extends Component{
                         
                         <footer>
                             <div className="actions">
-                                <button type="button" >
-                                    <img src={like} alt="like" />
+                                <button type="button">
+                                    
+                                    <img src={like} onClick={() => this.handleLike(post._id)/*cria um arrow function "() =>", passando a função
+                                    this.handleLike como parâmetro e não executando ela*/ } alt="like" />
                                 </button>
                                 <img src={comment} alt="comment" />
                                 <img src={send} alt="enviar" />

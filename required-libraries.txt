@@ -41,3 +41,5 @@ Bibliotecas para FrontEnd
     3- yarn add react-router-dom
 
     4- yarn add axios 
+
+    5- yarn add socket.io-client
