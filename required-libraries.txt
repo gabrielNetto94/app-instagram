@@ -39,3 +39,5 @@ Bibliotecas para FrontEnd
     2-  Excluir arquivos da pasta 'src' do frontend, deixando apenas os arquivos 'App.js' e 'index.js'
     
     3- yarn add react-router-dom
+
+    4- yarn add axios 
