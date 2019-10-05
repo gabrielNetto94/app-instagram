@@ -30,8 +30,7 @@ class Feed extends Component{
     }
     
     registerToSocket = () => {
-        //const socket = io('http://localhost:3333');
-        const socket = io('http://172.16.0.9:3333');
+        const socket = io('http://localhost:3333');
         
         //atualiza o feed com um novo post
         socket.on('post', newPost => {
@@ -68,7 +67,7 @@ class Feed extends Component{
                             <img src={more} alt="Mais"/>
                         </header>
 
-                        <img src={'http://172.16.0.9:3333/files/'+post.image} alt="" />
+                        <img src={'http://localhost:3333/files/'+post.image} alt="" />
                         
                         <footer>
                             <div className="actions">
